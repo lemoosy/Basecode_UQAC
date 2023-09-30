@@ -3,7 +3,7 @@
 #include "Settings.h"
 
 /// @brief Classe représentant un noeud dans une liste simplement chaînée.
-template <class ListData>
+template <typename ListData>
 class ListNode
 {
 public:
@@ -17,7 +17,7 @@ public:
 	ListNode(ListData* value, ListNode* next = nullptr);
 };
 
-template<class ListData>
+template <typename ListData>
 ListNode<ListData>::ListNode(ListData* value, ListNode* next)
 {
 	m_value = value;
@@ -25,7 +25,7 @@ ListNode<ListData>::ListNode(ListData* value, ListNode* next)
 }
 
 /// @brief Classe représentant une liste simplement chaînée.
-template <class ListData>
+template <typename ListData>
 class List
 {
 public:
@@ -58,14 +58,14 @@ public:
 	bool IsIn(ListData* value);
 };
 
-template<class ListData>
+template <typename ListData>
 List<ListData>::List()
 {
 	m_size = 0;
 	m_first = nullptr;
 }
 
-template<class ListData>
+template <typename ListData>
 List<ListData>::~List()
 {
 	ListNode<ListData>* current = m_first;
@@ -81,7 +81,7 @@ List<ListData>::~List()
 	}
 }
 
-template<class ListData>
+template <typename ListData>
 void List<ListData>::Print() const
 {
 	ListNode<ListData>* current = m_first;
@@ -95,7 +95,7 @@ void List<ListData>::Print() const
 	cout << "[nullptr]";
 }
 
-template<class ListData>
+template <typename ListData>
 void List<ListData>::InsertFirst(ListData* value)
 {
 	assert(value);
@@ -107,7 +107,7 @@ void List<ListData>::InsertFirst(ListData* value)
 	m_size++;
 }
 
-template<class ListData>
+template <typename ListData>
 ListData* List<ListData>::PopFirst()
 {
 	assert(m_size > 0);
@@ -125,7 +125,7 @@ ListData* List<ListData>::PopFirst()
 	return value;
 }
 
-template<class ListData>
+template <typename ListData>
 bool List<ListData>::IsIn(ListData* value)
 {
 	assert(value);

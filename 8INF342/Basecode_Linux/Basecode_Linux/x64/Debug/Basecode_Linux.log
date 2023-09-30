@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\PC Lemoosy\OneDrive\Bureau\Basecode\3A\C++\UQAC\8INF342\Basecode_Linux\Basecode_Linux\Historic.h(68,18): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\PC Lemoosy\OneDrive\Bureau\Basecode\3A\C++\UQAC\8INF342\Basecode_Linux\Basecode_Linux\Historic.h(69,18): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\PC Lemoosy\OneDrive\Bureau\Basecode\3A\C++\UQAC\8INF342\Basecode_Linux\Basecode_Linux\Historic.h(90,14): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+  Basecode_Linux.vcxproj -> C:\Users\PC Lemoosy\OneDrive\Bureau\Basecode\3A\C++\UQAC\8INF342\Basecode_Linux\x64\Debug\Basecode_Linux.exe
