@@ -41,7 +41,7 @@ public:
 	~List();
 
 	/// @brief Vérifie si la liste est vide.
-	inline int IsEmpty() const { return (m_size == 0); };
+	inline bool IsEmpty() const { return (m_size == 0); };
 
 	/// @brief Affiche la liste.
 	void Print() const;
@@ -54,8 +54,8 @@ public:
 	ListData* PopFirst();
 
 	/// @brief Vérifie si une valeur est dans la liste.
-	/// @return true si la valeur est dans la liste, false sinon.
-	bool IsIn(ListData* value);
+	/// @return la valeur dans la liste, nullptr sinon.
+	ListData* IsIn(ListData* value);
 };
 
 template <typename ListData>
@@ -126,7 +126,7 @@ ListData* List<ListData>::PopFirst()
 }
 
 template <typename ListData>
-bool List<ListData>::IsIn(ListData* value)
+ListData* List<ListData>::IsIn(ListData* value)
 {
 	assert(value);
 
@@ -136,11 +136,11 @@ bool List<ListData>::IsIn(ListData* value)
 	{
 		if (*(current->m_value) == *value)
 		{
-			return true;
+			return current->m_value;
 		}
 
 		current = current->m_next;
 	}
 
-	return false;
+	return nullptr;
 }

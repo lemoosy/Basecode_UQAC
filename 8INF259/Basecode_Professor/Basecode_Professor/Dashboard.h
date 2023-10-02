@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Key.h"
 #include "List.h"
 #include "Professor.h"
 #include "Settings.h"
@@ -13,6 +14,9 @@ private:
 
     /// @brief Liste des professeurs.
     List<Professor>* m_professors;
+
+    /// @brief Liste des leçons/occurences.
+    List<Key>* m_keys;
 
 
 
@@ -59,6 +63,10 @@ public:
     /// @brief Cherche un professeur dans la liste des professeurs ayant le moins d'étudiants.
     /// @return Le professeur si trouvé, nullptr sinon.
     Professor* GetProfessorWithMinimumStudents() const;
+
+
+    /// @brief Renvoie le cours le moins populaire.
+    string GetLessPopularLesson() const;
 
 
 

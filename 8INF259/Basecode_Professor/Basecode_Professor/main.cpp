@@ -1,7 +1,7 @@
 #include "Dashboard.h"
 #include "Settings.h"
 
-int main()
+int main(void)
 {
     /// Création du tableau de bord (permet de stocker et de gérer les professeurs).
 

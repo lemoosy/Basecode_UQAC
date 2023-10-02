@@ -5,11 +5,13 @@
 Dashboard::Dashboard()
 {
     m_professors = new List<Professor>;
+    m_keys = new List<Key>;
 }
 
 Dashboard::~Dashboard()
 {
     delete m_professors;
+    delete m_keys;
 }
 
 
@@ -45,6 +47,19 @@ bool Dashboard::ImportProfessors(string path)
             }
 
             professor->AddLesson(res);
+
+            Key* key = new Key(res, 0);
+            Key* keyRes = m_keys->IsIn(key);
+
+            if (keyRes)
+            {
+                keyRes->m_occ++;
+                delete key;
+            }
+            else
+            {
+                m_keys->InsertFirst(key);
+            }
         }
 
         while (1)
@@ -60,6 +75,7 @@ bool Dashboard::ImportProfessors(string path)
         }
 
         m_professors->InsertFirst(professor);
+
     }
 
     file.close();
@@ -221,6 +237,31 @@ Professor* Dashboard::GetProfessorWithMinimumStudents() const
 
 
 
+string Dashboard::GetLessPopularLesson() const
+{
+    assert(m_keys->IsEmpty() == false);
+
+    ListNode<Key>* minimum = m_keys->m_first;
+    ListNode<Key>* current = minimum->m_next;
+
+    while (current)
+    {
+        Key* kCurrent = current->m_value;
+        Key* kMinimum = minimum->m_value;
+
+        if (kCurrent->m_occ < kMinimum->m_occ)
+        {
+			minimum = current;
+		}
+
+        current = current->m_next;
+    }
+
+    return minimum->m_value->m_lesson;
+}
+
+
+
 int Dashboard::GetOccLessonsByProfessors(string lesson) const
 {
     int res = 0;
@@ -241,6 +282,8 @@ int Dashboard::GetOccLessonsByProfessors(string lesson) const
 
 void Dashboard::PrintProfessors() const
 {
+    // on peut aussi 'cout << m_professors << endl;'
+
     ListNode<Professor>* current = m_professors->m_first;
 
     while (current)
@@ -287,8 +330,8 @@ bool Dashboard::LoadInputs(string path)
 
         case '*':
         {
-            Professor* professor = GetProfessorWithMinimumLessons();
-            cout << "Professor with minimum lessons is [" << professor->m_name << "]." << endl;
+            string lesson = GetLessPopularLesson();
+            cout << "Less popular lesson [" << lesson << "]." << endl;
             break;
         }
 
@@ -330,5 +373,4 @@ LABEL_ERROR:
     file.close();
 
     return false;
-
 }

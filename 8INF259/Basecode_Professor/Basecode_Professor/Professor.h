@@ -24,19 +24,19 @@ public:
 
 
 
-	/// @brief Retourne le nombre de cours du professeur.
-	int GetNbLesson() const;
-
-	/// @brief Retourne le nombre d'étudiants qui suivent les cours du professeur.
-	int GetNbStudent() const;
-
-
-
 	/// @brief Initialise la liste des cours et la liste des étudiants (les listes sont vides).
 	Professor();
 
 	/// @brief Détruit la liste des cours et la liste des étudiants.
 	~Professor();
+	
+	
+	
+	/// @brief Retourne le nombre de cours du professeur.
+	int GetNbLesson() const;
+
+	/// @brief Retourne le nombre d'étudiants qui suivent les cours du professeur.
+	int GetNbStudent() const;
 
 
 

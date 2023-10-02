@@ -2,18 +2,6 @@
 
 
 
-int Professor::GetNbLesson() const
-{
-	return m_lessons->m_size;
-}
-
-int Professor::GetNbStudent() const
-{
-	return m_students->m_size;
-}
-
-
-
 Professor::Professor()
 {
 	m_name = "";
@@ -26,6 +14,19 @@ Professor::~Professor()
 {
 	delete m_lessons;
 	delete m_students;
+}
+
+
+
+
+int Professor::GetNbLesson() const
+{
+	return m_lessons->m_size;
+}
+
+int Professor::GetNbStudent() const
+{
+	return m_students->m_size;
 }
 
 
@@ -65,7 +66,7 @@ void Professor::AddStudent(string student)
 
 bool Professor::HasLesson(string lesson) const
 {
-	return m_lessons->IsIn(&lesson);
+	return (m_lessons->IsIn(&lesson) != nullptr);
 }
 
 
